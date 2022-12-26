@@ -8,9 +8,11 @@ import New from "./Components/New";
 
 export default class App extends Component {
   render() {
-    return <div>
-<Navbar/>
-<New/>
-    </div>;
+    return (
+      <div>
+        <Navbar />
+        <New />
+      </div>
+    );
   }
 }
