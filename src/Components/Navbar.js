@@ -1,17 +1,16 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
+import { Link } from "react-router-dom";
+// import React from "react";
 
-export class Navbar extends Component {
-  static propTypes = {};
-
-  render() {
-    return (
+function Navbar() {
+  return (
+    <>
       <div>
-        <nav className="navbar navbar-expand-lg bg-light">
+        <nav className="navbar navbar-expand-lg bg-dark">
           <div className="container-fluid">
-            <a className="navbar-brand" href="/">
-              Navbar
-            </a>
+            <Link className="navbar-brand" to="/">
+              KabriChacha
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -29,50 +28,71 @@ export class Navbar extends Component {
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/">
+                  <Link className="nav-link active" aria-current="page" to="/">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/about">
-                    About
-                  </a>
+                  <Link className="nav-link" to="/business">
+                    business
+                  </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/entertainment">
+                    entertainment
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/health">
+                    health
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/science">
+                    science
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/sports">
+                    sports
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/technology">
+                    technology
+                  </Link>
+                </li>
+
                 <li className="nav-item dropdown">
-                  <a
+                  <Link
                     className="nav-link dropdown-toggle"
-                    href="/"
+                    to="/"
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    Dropdown
-                  </a>
+                    country
+                  </Link>
                   <ul className="dropdown-menu">
                     <li>
-                      <a className="dropdown-item" href="/">
-                        Action
-                      </a>
+                      <Link className="dropdown-item" to="/">
+                        India
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="/">
-                        Another action
-                      </a>
+                      <Link className="dropdown-item" to="/">
+                        USA
+                      </Link>
                     </li>
                     <li>
                       <hr className="dropdown-divider" />
                     </li>
                     <li>
-                      <a className="dropdown-item" href="/">
-                        Something else here
-                      </a>
+                      <Link className="dropdown-item" to="/">
+                        More
+                      </Link>
                     </li>
                   </ul>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link disabled" href="/">
-                    Disabled
-                  </a>
                 </li>
               </ul>
               <form className="d-flex" role="search">
@@ -90,8 +110,8 @@ export class Navbar extends Component {
           </div>
         </nav>
       </div>
-    );
-  }
+    </>
+  );
 }
 
 export default Navbar;
