@@ -1,8 +1,8 @@
 import { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/Navbar";
-import New from "./components/New";
+import Navbar from "./Navbar";
+import New from "./New";
 import LoadingBar from "react-top-loading-bar";    
 export default class App extends Component {
   state={
