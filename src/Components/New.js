@@ -22,7 +22,8 @@ export class New extends Component {
       loading: false,
     };
   }
-  async updateNews() {
+  async updateNews() { 
+    this.props.setProgress(10);
     let url = `https://newsapi.org/v2/top-headlines?country=${
       this.props.country
     }&category=${
@@ -31,73 +32,25 @@ export class New extends Component {
       this.state.page + 1
     }&pageSize=${Number(this.props.pagesize)}`;
     console.log(url);
-    this.setState({ loading: true });
+    this.setState({ loading: true }); 
+    this.props.setProgress(20);
     let data = await fetch(url);
-    let parsedData = await data.json();
-    // this.setState({ loading: false });
+    this.props.setProgress(50);
+    let parsedData  = await data.json();
     this.setState({
       article: parsedData.articles,
-      // page: this.state.page + 1,
       loading: false,
     });
+    this.props.setProgress(100);
   }
   async componentDidMount() {
-    let url = `https://newsapi.org/v2/top-headlines?country=${
-      this.props.country
-    }&category=${
-      this.props.category
-    }&apiKey=7b026a4303bc4226a9a6c16d358efbb0&page=1&pageSize=${Number(
-      this.props.pagesize
-    )}`;
-    this.setState({ loading: true });
-    let data = await fetch(url);
-    let parsedData = await data.json();
-    this.setState({
-      page: 1,
-      article: parsedData.articles,
-      totalResults: parsedData.totalResults,
-      loading: false,
-    });
+    this.updateNews();
   }
   handlenext = async () => {
-    // let url = `https://newsapi.org/v2/top-headlines?country=${
-    //   this.props.country
-    // }&category=${
-    //   this.props.category
-    // }&apiKey=7b026a4303bc4226a9a6c16d358efbb0&page=${
-    //   this.state.page + 1
-    // }&pageSize=${Number(this.props.pagesize)}`;
-    // console.log(url);
-    // this.setState({ loading: true });
-    // let data = await fetch(url);
-    // let parsedData = await data.json();
-    // // this.setState({ loading: false });
-    // this.setState({
-    //   article: parsedData.articles,
-    //   page: this.state.page + 1,
-    //   loading: false,
-    // });
     this.setState({ page: this.state.page + 1 });
     this.updateNews();
   };
   handleprevious = async () => {
-    // console.log("Previous");
-    // let url = `https://newsapi.org/v2/top-headlines?country=${
-    //   this.props.country
-    // }&category=${
-    //   this.props.category
-    // }&apiKey=7b026a4303bc4226a9a6c16d358efbb0&page=${
-    //   this.state.page - 1
-    // }&pageSize=${Number(this.props.pagesize)}`;
-    // this.setState({ loading: true });
-    // let data = await fetch(url);
-    // let parsedData = await data.json();
-    // // this.setState({ loading: false });
-    // this.setState({
-    //   article: parsedData.articles,
-    //   loading: false,
-    //   page: this.state.page - 1,
-    // });
     this.setState({ page: this.state.page - 1 });
     this.updateNews();
   };
@@ -120,6 +73,7 @@ export class New extends Component {
                     }
                     publishedAt={element.publishedAt.slice(0, 9)}
                     author={element.author}
+                    // console.log(element.urlToImage); 
                     imageUrl={
                       !element.urlToImage
                         ? "https://my.alfred.edu/zoom/_images/foster-lake.jpg"
