@@ -1,8 +1,8 @@
 import { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/Navbar";
-import New from "./components/New";
+import Navbar from "./Components/Navbar";
+import New from "./Components/New";
 import LoadingBar from "react-top-loading-bar";    
 export default class App extends Component {
   state={
@@ -21,10 +21,12 @@ export default class App extends Component {
         height={3}
       />
       <Routes>
-        <Route  exact path="/" element={<New key="general"  pagesize={6} country="in" category="general"/>}/>
-        <Route exact path="/Kharichacha"  element={ <New setProgress = {this.setProgress}key="general" pagesize={6} country="in" category="general" />}/>
+      <Route exact  path="/"  element={ <New setProgress = {this.setProgress} key="general" pagesize={6} country="in" category="general" /> }/>
+        <Route exact  path="/Kharichacha"  element={ <New setProgress = {this.setProgress} key="general" pagesize={6} country="in" category="general" />}/>
         <Route exact  path="/business" element={  <New setProgress = {this.setProgress}key="business" pagesize={6} country="in" category="business" />}/>
         <Route exact  path="/entertainment" element={<New setProgress = {this.setProgress}key="entertainment"  pagesize={6} country="in" category="entertainment"/>}/>
+        <Route exact  path="/general"  element={ <New setProgress = {this.setProgress} key="general" pagesize={6} country="in" category="general" /> }/>
+
         <Route exact path="/health"  element={ <New setProgress = {this.setProgress} key="health" pagesize={6} country="in" category="health" /> }/>
         <Route exact path="/science" element={  <New setProgress = {this.setProgress} key="science" pagesize={6} country="in" category="science" /> } />
         <Route exact path="/sports" element={  <New setProgress = {this.setProgress} key="sports" pagesize={6} country="in" category="sports" /> } />
